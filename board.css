@@ -1,11 +1,24 @@
-div#board_wrapper {
+div#game_wrapper {
+  text-align: center;
+}
+div#game_zone {
+  display: inline-block;
+  width: 900px;
   margin: 20px;
+}
+
+div#board_zone {
   padding: 20px;
   border-radius: 20px;
   background-color: #153474;
   width: 640px;
   height: 640px;
   position: relative;
+  float: left;
+}
+
+div#tool_zone {
+  float:right;
 }
 
 table.board_table {
@@ -40,12 +53,11 @@ div.die_shown {
   color: #000000;
 }
 
-div#board_zone {
-  float: left;
-}
-
 button {
   float: none;
+  display: block;
+  margin-bottom: 12px;
+  border: 3px solid #364769;
   background-color: #364769;
   color: #FFF;
   padding:10px 20px;
@@ -54,4 +66,9 @@ button {
   font-family: 'Source Sans Pro', sans-serif;
   border-radius: 10px;
   width: 200px;
+}
+
+#timerDisplay {
+  background-color: #fffde9;
+  color: #364769;
 }

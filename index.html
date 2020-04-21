@@ -8,39 +8,43 @@
 </head>
 <body onload="setBoard();">
 
-<div id="board_zone">
+<div id="game_wrapper">
+    <div id="game_zone">
 
-<div id="board_wrapper"><table class="board_table"><tr>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_0"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_1"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_2"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_3"></div></td>
-</tr>
-<tr>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_4"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_5"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_6"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_7"></div></td>
-</tr>
-<tr>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_8"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_9"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_10"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_11"></div></td>
-</tr>
-<tr>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_12"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_13"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_14"></div></td>
-<td class="board_cell"><div class="die_cube" id="bgl_cell_15"></div></td>
-</tr>
-</table>
-</div>
-</div>
+  <div id="board_zone">
+    <table class="board_table">
+      <tr>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_0"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_1"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_2"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_3"></div></td>
+      </tr>
+      <tr>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_4"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_5"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_6"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_7"></div></td>
+      </tr>
+      <tr>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_8"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_9"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_10"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_11"></div></td>
+      </tr>
+      <tr>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_12"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_13"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_14"></div></td>
+        <td class="board_cell"><div class="die_cube" id="bgl_cell_15"></div></td>
+      </tr>
+    </table>
+  </div>
 
-<div id="tool_zone">
-  <button onclick="setTimer()" id="timerButton" value="Start">Start</button>
-  <button id="timerDisplay"></button>
+  <div id="tool_zone">
+    <button id="timerDisplay"></button>
+    <button onclick="setTimer()" id="timerButton" value="Start">Start</button>
+  </div>
+</div>
 </div>
 
 </body>
