@@ -1,11 +1,14 @@
 var bgl_timeout  = 180;
+var bgl_alert    = 15;
 var bgl_timer    = null;
 var elem_clock   = null;
 var elem_button  = null;
+var elem_dice    = null;
 
 function setBoard() {
   elem_button = document.getElementById( 'timerButton' );
   elem_clock  = document.getElementById( 'timerDisplay' );
+  elem_dice   = document.getElementsByClassName( 'die_cube' );
   setTimerDisplay();
   var dice = setDice();
   var dice_count = dice.length;
@@ -72,13 +75,13 @@ function getDice() {
 }
 
 function displayDice( mode ) {
-  var elem = document.getElementsByClassName( 'die_cube' );
-  var css  = 'die_shown';
-  for ( var i = 0; i < elem.length; i++ ) {
+  for ( var i = 0; i < elem_dice.length; i++ ) {
     if ( 'Hide' !== mode ) {
-      elem[ i ].classList.add( css );
+      elem_dice[ i ].classList.add( 'die_shown' );
     } else {
-      elem[ i ].classList.remove( css );
+      console.log('x');
+      elem_dice[ i ].classList.remove( 'die_shown' );
+      elem_dice[ i ].classList.remove( 'timer_alert' );
     }
   }
 }
@@ -104,10 +107,18 @@ function setTimer() {
 function activateTimer() {
   bgl_timeout --;
   setTimerDisplay();
-  if ( 0 === bgl_timeout ) {
+  if ( bgl_alert === bgl_timeout ) {
+    css = 'timer_alert';
+    elem_clock.classList.add( css );
+    for ( var i = 0; i < elem_dice.length; i++ ) {
+      elem_dice[ i ].classList.add( css );
+    }
+  } else if ( 0 === bgl_timeout ) {
+    // elem_dice[ i ].classList.remove( css );
     clearInterval( bgl_timer );
     displayDice( 'Hide' );
     setButton( 'Show', 'Score' );
+    elem_clock.innerText = 'Time up!';
   }
 }
 
