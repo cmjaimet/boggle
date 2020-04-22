@@ -31,7 +31,7 @@ function setDieStyle( cell_number, die_char ) {
   if ( 0 !== rotate ) {
     cell.style.transform = 'rotate( ' + rotate + 'deg )';
   }
-  if ( 'M' === die_char || 'W' === die_char ) {
+  if ( -1 !== 'MNWZ'.indexOf( die_char ) ) {
     cell.style.textDecoration = 'underline';
   }
 }
