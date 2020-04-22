@@ -1,4 +1,4 @@
-var bgl_timeout  = 180;
+var bgl_timeout  = 120;
 var bgl_alert    = 15;
 var bgl_timer    = null;
 var elem_clock   = null;
