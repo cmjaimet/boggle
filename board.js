@@ -1,14 +1,18 @@
-var bgl_timeout  = 120;
+var bgl_gametime = 120;
 var bgl_alert    = 15;
 var bgl_timer    = null;
 var elem_clock   = null;
 var elem_button  = null;
 var elem_dice    = null;
+var bgl_timeout  = bgl_gametime;
+var bgl_countdown  = 3;
 
 function setBoard() {
   elem_button = document.getElementById( 'timerButton' );
   elem_clock  = document.getElementById( 'timerDisplay' );
   elem_dice   = document.getElementsByClassName( 'die_cube' );
+  elem_button.addEventListener( "click", setTimer );
+
   setTimerDisplay();
   var dice = setDice();
   var dice_count = dice.length;
@@ -79,7 +83,6 @@ function displayDice( mode ) {
     if ( 'Hide' !== mode ) {
       elem_dice[ i ].classList.add( 'die_shown' );
     } else {
-      console.log('x');
       elem_dice[ i ].classList.remove( 'die_shown' );
       elem_dice[ i ].classList.remove( 'timer_alert' );
     }
@@ -90,17 +93,37 @@ function setTimer() {
   var mode = elem_button.value;
   if ( 0 >= bgl_timeout ) {
     displayDice( 'Show' );
+    setButton( next, next );
   } else {
     var next = 'Pause';
     if ( 'Pause' === mode ) {
       next = 'Start'
       clearInterval( bgl_timer );
       displayDice( 'Hide' );
+      setButton( next, next );
     } else {
-      bgl_timer = setInterval( activateTimer, 1000 );
-      displayDice( 'Show' );
+      if ( bgl_gametime == bgl_timeout ) {
+        setButton( bgl_countdown, bgl_countdown );
+        bgl_counttimer = setInterval( activateCountdown, 1000 );
+      } else {
+        bgl_timer = setInterval( activateTimer, 1000 );
+        displayDice( 'Show' );
+        setButton( next, next );
+      }
     }
-    setButton( next, next );
+  }
+}
+
+function activateCountdown() {
+  if ( 1 >= bgl_countdown ) {
+    clearInterval( bgl_counttimer );
+    bgl_timer = setInterval( activateTimer, 1000 );
+    displayDice( 'Show' );
+    setButton( 'Pause', 'Pause' );
+    return;
+  } else {
+    bgl_countdown -= 1;
+    setButton( bgl_countdown, bgl_countdown );
   }
 }
 
