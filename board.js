@@ -1,18 +1,23 @@
-var bgl_gametime = 120;
-var bgl_alert    = 15;
-var bgl_timer    = null;
-var elem_clock   = null;
-var elem_button  = null;
-var elem_dice    = null;
-var bgl_timeout  = bgl_gametime;
-var bgl_countdown  = 3;
+var bgl_gametime        = 120; // length of game in seconds
+var bgl_alert           = 10;  // length of warning before games ends in seconds
+var bgl_timeout         = 0;   // time remaining in game in seconds
+var bgl_countdown_base  = 3;   // count down timer before game starts in seconds
+var bgl_timer           = null;
+var elem_clock          = null;
+var elem_button         = null;
+var elem_dice           = null;
 
 function setBoard() {
   elem_button = document.getElementById( 'timerButton' );
   elem_clock  = document.getElementById( 'timerDisplay' );
   elem_dice   = document.getElementsByClassName( 'die_cube' );
   elem_button.addEventListener( "click", setTimer );
+  startGame();
+}
 
+function startGame() {
+  bgl_timeout  = bgl_gametime;
+  bgl_countdown  = bgl_countdown_base;
   setTimerDisplay();
   var dice = setDice();
   var dice_count = dice.length;
@@ -26,6 +31,7 @@ function setBoard() {
     setDieStyle( x, die_char );
     dice.splice( die_number, 1 );
   }
+  setButton( 'Start', 'Start' );
 }
 
 function setDieStyle( cell_number, die_char ) {
@@ -91,9 +97,11 @@ function displayDice( mode ) {
 
 function setTimer() {
   var mode = elem_button.value;
-  if ( 0 >= bgl_timeout ) {
+  if ( 'Restart' === mode ) {
+    startGame();
+  } else if ( 0 >= bgl_timeout ) {
     displayDice( 'Show' );
-    setButton( next, next );
+    setButton( 'Restart', 'New Game' );
   } else {
     var next = 'Pause';
     if ( 'Pause' === mode ) {
