@@ -1,4 +1,4 @@
-var bgl_gametime        = 120; // length of game in seconds
+var bgl_gametime        = 180; // length of game in seconds
 var bgl_alert           = 10;  // length of warning before games ends in seconds
 var bgl_timeout         = 0;   // time remaining in game in seconds
 var bgl_countdown_base  = 3;   // count down timer before game starts in seconds
@@ -81,15 +81,15 @@ function getDice() {
     [ 'C', 'H', 'A', 'P', 'O', 'S' ],
     [ 'S', 'S', 'E', 'T', 'I', 'O' ],
     [ 'Qu', 'U', 'N', 'H', 'I', 'M' ],
-    [ 'W', 'T', 'A', 'O', 'O', 'T' ],
-    [ 'M', 'T', 'C', 'U', 'I', 'O' ],
-    [ 'I', 'O', 'T', 'S', 'S', 'E' ],
-    [ 'A', 'S', 'K', 'P', 'F', 'F' ],
-    [ 'S', 'T', 'Y', 'T', 'I', 'D' ],
-    [ 'I', 'D', 'E', 'R', 'X', 'L' ],
-    [ 'L', 'R', 'T', 'E', 'T', 'Y' ],
-    [ 'C', 'H', 'A', 'P', 'O', 'S' ],
-    [ 'S', 'S', 'E', 'T', 'I', 'O' ],
+    [ 'A', 'A', 'E', 'E', 'G', 'N' ],
+    [ 'A', 'C', 'H', 'O', 'P', 'S' ],
+    [ 'A', 'F', 'F', 'K', 'P', 'S' ],
+    [ 'D', 'E', 'I', 'L', 'R', 'X' ],
+    [ 'D', 'E', 'L', 'R', 'V', 'Y' ],
+    [ 'E', 'E', 'G', 'H', 'N', 'W' ],
+    [ 'E', 'I', 'O', 'S', 'S', 'T' ],
+    [ 'H', 'I', 'M', 'N', 'Qu', 'U' ],
+    [ '@', '*', '-', '!', '+', '=' ],
   ];
 }
 
