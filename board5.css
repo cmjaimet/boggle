@@ -1,0 +1,78 @@
+div#game_wrapper {
+  text-align: center;
+}
+div#game_zone {
+  display: inline-block;
+  width: 900px;
+  margin: 20px;
+}
+
+div#board_zone {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #1A237E;
+  width: 640px;
+  height: 640px;
+  position: relative;
+  float: left;
+}
+
+div#tool_zone {
+  float:right;
+}
+
+table#board_table {
+  border-collapse: collapse;
+  border: 4px solid #364769;
+  margin: 0 auto;
+}
+
+td.board_cell {
+  padding: 5px;
+  margin: 5px;
+  width:  120px;
+  height: 120px;
+  border: 5px solid #364769;
+}
+
+div.die_cube {
+  background-color: #F5F5F5;
+  color: #F5F5F5;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  font-size: 60px;
+  font-weight: bold;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  line-height: 110px;
+}
+
+div.die_shown {
+  background-color: #F5F5F5;
+  color: #2B1B17;
+}
+
+button {
+  float: none;
+  display: block;
+  margin-bottom: 12px;
+  border: 3px solid #1A237E;
+  background-color: #1A237E;
+  color: #FFF;
+  padding:10px 20px;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Source Sans Pro', sans-serif;
+  border-radius: 10px;
+  width: 200px;
+}
+
+#timerDisplay {
+  background-color: #F5F5F5;
+  color: #333;
+}
+
+.timer_alert {
+  background-color: #FFF59D  !important;
+}
