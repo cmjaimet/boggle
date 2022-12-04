@@ -89,11 +89,13 @@ function getDice() {
     [ 'E', 'E', 'G', 'H', 'N', 'W' ],
     [ 'E', 'I', 'O', 'S', 'S', 'T' ],
     [ 'H', 'I', 'M', 'N', 'Qu', 'U' ],
-    [ '@', '*', '-', '!', '+', '=' ],
+    [ 'H', 'L', 'N', 'N', 'R', 'Z' ],
   ];
 }
+// [ '@', '*', '-', '!', '+', '=' ],
 
 function displayDice( mode ) {
+  
   for ( var i = 0; i < elem_dice.length; i++ ) {
     if ( 'Hide' !== mode ) {
       elem_dice[ i ].classList.add( 'die_shown' );
