@@ -30,9 +30,17 @@ table#board_table {
 td.board_cell {
   padding: 5px;
   margin: 5px;
-  width: 160px;
-  height: 160px;
   border: 5px solid #364769;
+}
+
+td.board_cell_4 {
+  width:  160px;
+  height: 160px;
+}
+
+td.board_cell_5 {
+  width:  120px;
+  height: 120px;
 }
 
 div.die_cube {
@@ -41,11 +49,19 @@ div.die_cube {
   border-radius: 10px;
   width: 100%;
   height: 100%;
-  font-size: 96px;
   font-weight: bold;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
+}
+
+div.die_cube_4 {
+  font-size:    96px;
   line-height: 144px;
+}
+
+div.die_cube_5 {
+  font-size:    60px;
+  line-height: 110px;
 }
 
 div.die_shown {

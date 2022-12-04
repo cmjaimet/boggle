@@ -3,16 +3,40 @@ var bgl_alert           = 10;  // length of warning before games ends in seconds
 var bgl_timeout         = 0;   // time remaining in game in seconds
 var bgl_countdown_base  = 3;   // count down timer before game starts in seconds
 var bgl_timer           = null;
+var bgl_board_size      = 5;
 var elem_clock          = null;
 var elem_button         = null;
 var elem_dice           = null;
+var elem_board          = null;
 
 function setBoard() {
+  elem_board  = document.getElementById( 'board_table' );
   elem_button = document.getElementById( 'timerButton' );
   elem_clock  = document.getElementById( 'timerDisplay' );
   elem_dice   = document.getElementsByClassName( 'die_cube' );
   elem_button.addEventListener( "click", setTimer );
+  createBoard();
   startGame();
+}
+
+function createBoard() {
+  var elem = null;
+  for ( r = 0; r < bgl_board_size; r ++ ) {
+    elem_tr = document.createElement('tr');
+    for ( c = 0; c < bgl_board_size; c ++ ) {
+      cell_id = r * 4 + c;
+      elem_td = document.createElement('td');
+      elem_td.classList.add( 'board_cell' )
+      elem_td.classList.add( 'board_cell_' + bgl_board_size )
+      elem_div = document.createElement('div');
+      elem_div.classList.add( 'die_cube' )
+      elem_div.classList.add( 'die_cube_' + bgl_board_size )
+      elem_div.id = 'bgl_cell_' + cell_id
+      elem_td.appendChild( elem_div )
+      elem_tr.appendChild( elem_td )
+    }
+    elem_board.appendChild( elem_tr )
+  }
 }
 
 function startGame() {
