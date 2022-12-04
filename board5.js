@@ -1,7 +1,7 @@
-var bgl_gametime        = 5; // length of game in seconds
-var bgl_alert           = 1;  // length of warning before games ends in seconds
+var bgl_gametime        = 180; // length of game in seconds
+var bgl_alert           = 15;  // length of warning before games ends in seconds
 var bgl_timeout         = 0;   // time remaining in game in seconds
-var bgl_countdown_base  = 1;   // count down timer before game starts in seconds
+var bgl_countdown_base  = 3;   // count down timer before game starts in seconds
 var bgl_timer           = null;
 var elem_clock          = null;
 var elem_button         = null;
