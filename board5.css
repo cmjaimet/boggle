@@ -53,6 +53,10 @@ div.die_shown {
   color: #2B1B17;
 }
 
+div.die_double {
+  background-color: #FF9999;
+}
+
 button {
   float: none;
   display: block;

@@ -1,11 +1,12 @@
-var bgl_gametime        = 180; // length of game in seconds
-var bgl_alert           = 10;  // length of warning before games ends in seconds
+var bgl_gametime        = 5; // length of game in seconds
+var bgl_alert           = 1;  // length of warning before games ends in seconds
 var bgl_timeout         = 0;   // time remaining in game in seconds
-var bgl_countdown_base  = 3;   // count down timer before game starts in seconds
+var bgl_countdown_base  = 1;   // count down timer before game starts in seconds
 var bgl_timer           = null;
 var elem_clock          = null;
 var elem_button         = null;
 var elem_dice           = null;
+var double_die          = 0;
 
 function setBoard() {
   elem_button = document.getElementById( 'timerButton' );
@@ -16,6 +17,7 @@ function setBoard() {
 }
 
 function startGame() {
+  displayDice( 'Hide' )
   bgl_timeout  = bgl_gametime;
   bgl_countdown  = bgl_countdown_base;
   setTimerDisplay();
@@ -24,6 +26,7 @@ function startGame() {
   var die_number = 0;
   var die_char  = '';
   var die_style  = '';
+  double_die = Math.floor( Math.random() * dice_count )
   for ( x = 0; x < dice_count; x++ ) {
     die_number = getDieNumber( dice );
     die_char   = getDieFace( dice, die_number );
@@ -95,12 +98,15 @@ function getDice() {
 // [ '@', '*', '-', '!', '+', '=' ],
 
 function displayDice( mode ) {
-  
   for ( var i = 0; i < elem_dice.length; i++ ) {
     if ( 'Hide' !== mode ) {
       elem_dice[ i ].classList.add( 'die_shown' );
+      if ( i == double_die ) {
+        elem_dice[ i ].classList.add( 'die_double' );
+    }
     } else {
       elem_dice[ i ].classList.remove( 'die_shown' );
+      elem_dice[ i ].classList.remove( 'die_double' );
       elem_dice[ i ].classList.remove( 'timer_alert' );
     }
   }
@@ -160,7 +166,7 @@ function activateTimer() {
     clearInterval( bgl_timer );
     displayDice( 'Hide' );
     setButton( 'Show', 'Score' );
-    elem_clock.innerText = 'Time up!';
+    elem_clock.innerText = "Time's up motherfucker!";
   }
 }
 
