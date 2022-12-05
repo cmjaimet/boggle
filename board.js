@@ -1,9 +1,9 @@
-var bgl_gametime        = 120; // length of game in seconds
+var bgl_gametime        = 180; // length of game in seconds
+var bgl_board_size      = 5;   // width and height of the board in dice
 var bgl_alert           = 10;  // length of warning before games ends in seconds
 var bgl_timeout         = 0;   // time remaining in game in seconds
 var bgl_countdown_base  = 3;   // count down timer before game starts in seconds
 var bgl_timer           = null;
-var bgl_board_size      = 5;
 var elem_clock          = null;
 var elem_button         = null;
 var elem_dice           = null;
