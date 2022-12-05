@@ -3,6 +3,8 @@ var bgl_board_size      = 5;   // width and height of the board in dice
 var bgl_alert           = 10;  // length of warning before games ends in seconds
 var bgl_timeout         = 0;   // time remaining in game in seconds
 var bgl_countdown_base  = 3;   // count down timer before game starts in seconds
+var dice_count          = bgl_board_size * bgl_board_size;
+var double_die          = Math.floor( Math.random() * dice_count )
 var bgl_timer           = null;
 var elem_clock          = null;
 var elem_button         = null;
@@ -24,7 +26,7 @@ function createBoard() {
   for ( r = 0; r < bgl_board_size; r ++ ) {
     elem_tr = document.createElement('tr');
     for ( c = 0; c < bgl_board_size; c ++ ) {
-      cell_id = r * 4 + c;
+      cell_id = ( r * bgl_board_size ) + c;
       elem_td = document.createElement('td');
       elem_td.classList.add( 'board_cell' )
       elem_td.classList.add( 'board_cell_' + bgl_board_size )
@@ -43,8 +45,7 @@ function startGame() {
   bgl_timeout  = bgl_gametime;
   bgl_countdown  = bgl_countdown_base;
   setTimerDisplay();
-  var dice = setDice();
-  var dice_count = dice.length;
+  var dice = getDice();
   var die_number = 0;
   var die_char  = '';
   var die_style  = '';
@@ -83,10 +84,6 @@ function getDieNumber( dice ) {
   return Math.floor( Math.random() * dice.length );
 }
 
-function setDice() {
-  return getDice();
-}
-
 function getDice() {
   return [
     [ 'A', 'O', 'J', 'O', 'B', 'B' ],
@@ -105,6 +102,15 @@ function getDice() {
     [ 'C', 'H', 'A', 'P', 'O', 'S' ],
     [ 'S', 'S', 'E', 'T', 'I', 'O' ],
     [ 'Qu', 'U', 'N', 'H', 'I', 'M' ],
+    [ 'A', 'A', 'E', 'E', 'G', 'N' ],
+    [ 'A', 'C', 'H', 'O', 'P', 'S' ],
+    [ 'A', 'F', 'F', 'K', 'P', 'S' ],
+    [ 'D', 'E', 'I', 'L', 'R', 'X' ],
+    [ 'D', 'E', 'L', 'R', 'V', 'Y' ],
+    [ 'E', 'E', 'G', 'H', 'N', 'W' ],
+    [ 'E', 'I', 'O', 'S', 'S', 'T' ],
+    [ 'H', 'I', 'M', 'N', 'Qu', 'U' ],
+    [ 'H', 'L', 'N', 'N', 'R', 'Z' ],
   ];
 }
 
@@ -112,9 +118,13 @@ function displayDice( mode ) {
   for ( var i = 0; i < elem_dice.length; i++ ) {
     if ( 'Hide' !== mode ) {
       elem_dice[ i ].classList.add( 'die_shown' );
+      if ( i == double_die ) {
+        elem_dice[ i ].classList.add( 'die_double' );
+    }
     } else {
       elem_dice[ i ].classList.remove( 'die_shown' );
-      elem_dice[ i ].classList.remove( 'timer_alert' );
+      elem_dice[ i ].classList.remove( 'die_double' );
+      elem_dice[ i ].classList.remove( 'die_alert' );
     }
   }
 }
@@ -163,17 +173,16 @@ function activateTimer() {
   bgl_timeout --;
   setTimerDisplay();
   if ( bgl_alert === bgl_timeout ) {
-    css = 'timer_alert';
-    elem_clock.classList.add( css );
+    css = 'die_alert';
+    // elem_clock.classList.add( css );
     for ( var i = 0; i < elem_dice.length; i++ ) {
       elem_dice[ i ].classList.add( css );
     }
   } else if ( 0 === bgl_timeout ) {
-    // elem_dice[ i ].classList.remove( css );
     clearInterval( bgl_timer );
     displayDice( 'Hide' );
     setButton( 'Show', 'Score' );
-    elem_clock.innerText = 'Time up!';
+    elem_clock.innerText = "Time is up!";
   }
 }
 

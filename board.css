@@ -64,9 +64,17 @@ div.die_cube_5 {
   line-height: 110px;
 }
 
-div.die_shown {
+.die_shown {
   background-color: #F5F5F5;
-  color: #2B1B17;
+  color: #2B1B17 !important;
+}
+
+div.die_double {
+  background-color: #FF9999 !important;
+}
+
+div.die_alert {
+  background-color: #FFF59D;
 }
 
 button {
@@ -85,10 +93,5 @@ button {
 }
 
 #timerDisplay {
-  background-color: #F5F5F5;
   color: #333;
-}
-
-.timer_alert {
-  background-color: #FFF59D  !important;
 }
