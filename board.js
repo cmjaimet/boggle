@@ -1,5 +1,5 @@
 var bgl_gametime        = 180; // length of game in seconds
-var bgl_board_size      = 5;   // width and height of the board in dice
+var bgl_board_size      = 4;   // width and height of the board in dice
 var bgl_alert           = 10;  // length of warning before games ends in seconds
 var bgl_timeout         = 0;   // time remaining in game in seconds
 var bgl_countdown_base  = 3;   // count down timer before game starts in seconds
@@ -84,34 +84,64 @@ function getDieNumber( dice ) {
   return Math.floor( Math.random() * dice.length );
 }
 
-function getDice() {
-  return [
-    [ 'A', 'O', 'J', 'O', 'B', 'B' ],
-    [ 'E', 'E', 'A', 'A', 'G', 'N' ],
-    [ 'H', 'W', 'T', 'R', 'E', 'V' ],
-    [ 'S', 'N', 'U', 'I', 'E', 'E' ],
-    [ 'H', 'R', 'N', 'N', 'L', 'Z' ],
-    [ 'W', 'E', 'N', 'E', 'G', 'H' ],
-    [ 'W', 'T', 'A', 'O', 'O', 'T' ],
-    [ 'M', 'T', 'C', 'U', 'I', 'O' ],
-    [ 'I', 'O', 'T', 'S', 'S', 'E' ],
-    [ 'A', 'S', 'K', 'P', 'F', 'F' ],
-    [ 'S', 'T', 'Y', 'T', 'I', 'D' ],
-    [ 'I', 'D', 'E', 'R', 'X', 'L' ],
-    [ 'L', 'R', 'T', 'E', 'T', 'Y' ],
-    [ 'C', 'H', 'A', 'P', 'O', 'S' ],
-    [ 'S', 'S', 'E', 'T', 'I', 'O' ],
-    [ 'Qu', 'U', 'N', 'H', 'I', 'M' ],
-    [ 'A', 'A', 'E', 'E', 'G', 'N' ],
-    [ 'A', 'C', 'H', 'O', 'P', 'S' ],
-    [ 'A', 'F', 'F', 'K', 'P', 'S' ],
-    [ 'D', 'E', 'I', 'L', 'R', 'X' ],
-    [ 'D', 'E', 'L', 'R', 'V', 'Y' ],
-    [ 'E', 'E', 'G', 'H', 'N', 'W' ],
-    [ 'E', 'I', 'O', 'S', 'S', 'T' ],
-    [ 'H', 'I', 'M', 'N', 'Qu', 'U' ],
-    [ 'H', 'L', 'N', 'N', 'R', 'Z' ],
-  ];
+function getDice( mode ) {
+  if ( 'easy' != mode ) {
+    return [
+      [ 'A', 'O', 'J', 'O', 'B', 'B' ],
+      [ 'E', 'E', 'A', 'A', 'G', 'N' ],
+      [ 'H', 'W', 'T', 'R', 'E', 'V' ],
+      [ 'S', 'N', 'U', 'I', 'E', 'E' ],
+      [ 'H', 'R', 'N', 'N', 'L', 'Z' ],
+      [ 'W', 'E', 'N', 'E', 'G', 'H' ],
+      [ 'W', 'T', 'A', 'O', 'O', 'T' ],
+      [ 'M', 'T', 'C', 'U', 'I', 'O' ],
+      [ 'I', 'O', 'T', 'S', 'S', 'E' ],
+      [ 'A', 'S', 'K', 'P', 'F', 'F' ],
+      [ 'S', 'T', 'Y', 'T', 'I', 'D' ],
+      [ 'I', 'D', 'E', 'R', 'X', 'L' ],
+      [ 'L', 'R', 'T', 'E', 'T', 'Y' ],
+      [ 'C', 'H', 'A', 'P', 'O', 'S' ],
+      [ 'S', 'S', 'E', 'T', 'I', 'O' ],
+      [ 'Qu', 'U', 'N', 'H', 'I', 'M' ],
+      [ 'A', 'A', 'E', 'E', 'G', 'N' ],
+      [ 'A', 'C', 'H', 'O', 'P', 'S' ],
+      [ 'A', 'F', 'F', 'K', 'P', 'S' ],
+      [ 'D', 'E', 'I', 'L', 'R', 'X' ],
+      [ 'D', 'E', 'L', 'R', 'V', 'Y' ],
+      [ 'E', 'E', 'G', 'H', 'N', 'W' ],
+      [ 'E', 'I', 'O', 'S', 'S', 'T' ],
+      [ 'H', 'I', 'M', 'N', 'Qu', 'U' ],
+      [ 'H', 'L', 'N', 'N', 'R', 'Z' ],
+    ];
+  } else {
+    return [
+      [ 'A', 'O', 'D', 'O', 'B', 'C' ],
+      [ 'E', 'E', 'E', 'E', 'E', 'E' ],
+      [ 'H', 'W', 'T', 'R', 'E', 'V' ],
+      [ 'S', 'N', 'U', 'I', 'E', 'E' ],
+      [ 'H', 'R', 'N', 'N', 'L', 'S' ],
+      [ 'W', 'E', 'N', 'E', 'G', 'H' ],
+      [ 'A', 'T', 'A', 'O', 'O', 'T' ],
+      [ 'M', 'T', 'C', 'U', 'A', 'O' ],
+      [ 'S', 'S', 'S', 'S', 'S', 'S' ],
+      [ 'A', 'S', 'E', 'P', 'F', 'F' ],
+      [ 'S', 'T', 'Y', 'T', 'I', 'D' ],
+      [ 'I', 'D', 'E', 'R', 'X', 'L' ],
+      [ 'L', 'R', 'T', 'E', 'T', 'Y' ],
+      [ 'C', 'H', 'A', 'P', 'O', 'S' ],
+      [ 'S', 'S', 'E', 'T', 'I', 'O' ],
+      [ 'Qu', 'U', 'N', 'H', 'I', 'M' ],
+      [ 'A', 'A', 'E', 'E', 'G', 'N' ],
+      [ 'A', 'C', 'H', 'O', 'P', 'S' ],
+      [ 'A', 'F', 'F', 'K', 'P', 'S' ],
+      [ 'D', 'E', 'I', 'L', 'R', 'X' ],
+      [ 'D', 'E', 'L', 'R', 'V', 'Y' ],
+      [ 'E', 'E', 'G', 'H', 'N', 'W' ],
+      [ 'E', 'I', 'O', 'S', 'S', 'T' ],
+      [ 'H', 'I', 'M', 'N', 'E', 'U' ],
+      [ 'H', 'L', 'N', 'N', 'R', 'Z' ],
+    ];
+  }
 }
 
 function displayDice( mode ) {
